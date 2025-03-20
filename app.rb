@@ -34,6 +34,21 @@ get("/square_root/results") do
 end
 
 get("/payment/results") do
+  @apr = params["user_apr"].to_f
+  @years = params["user_years"].to_i
+  @principal = params["user_pv"].to_f
+
+  @rate = @apr / 100 / 12
+  @adjrate = @rate + 1
+  @period = @years * 12
+
+  @raghu1 = @rate * @principal
+  @raghu2 = @rate + 1
+  @whyme = @period * -1
+  @raghu3 = @raghu2 ** @whyme - 1
+  @almost = @raghu1 / @raghu3
+  @pay = @almost * -1
+
   erb(:apargh_results)
 end
 
