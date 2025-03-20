@@ -22,14 +22,18 @@ get("/random/new") do
 end
 
 get("/square/results") do
+  @basenum = params["number"].to_i
+  @squarer = @basenum * @basenum
   erb(:besquare_results)
 end
 
-get("square_root/results") do
+get("/square_root/results") do
+  @basenum = params["number"].to_i
+  @rooter = @basenum ** 0.5
   erb(:berooted_results)
 end
 
-get("payment/results") do
+get("/payment/results") do
   erb(:apargh_results)
 end
 
