@@ -38,5 +38,8 @@ get("/payment/results") do
 end
 
 get("/random/results") do
+  @minfloat = params["user_min"].to_f
+  @maxfloat = params["user_max"].to_f
+  @randfloat = rand(@minfloat..@maxfloat)
   erb(:randomizer_results)
 end
